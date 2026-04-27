@@ -42,14 +42,37 @@ A modern, premium, and fully responsive lawyer portfolio website with a **black 
 - **React Icons** & **Lucide React**
 - **Tailwind CSS** (inline styles version)
 
-### 📸 Screenshots
-
-![Hero Section](https://via.placeholder.com/1200x600/111111/f59e0b?text=Hero+Section)
-![About Me](https://via.placeholder.com/1200x600/111111/f59e0b?text=About+Me)
-![Testimonials](https://via.placeholder.com/1200x600/111111/f59e0b?text=Testimonials)
-
 ### 🚀 Live Demo
 
 → [View Live Website](https://your-live-link.netlify.app) *(Replace with your actual deployed link)*
 
 ### 📂 Project Structure
+
+├── public/
+│   ├── shreya-profile.png
+│   └── logos/
+├── src/
+│   ├── components/
+│   │   └── Navbar.jsx
+│   ├── pages/
+│   │   ├── Home.jsx
+│   │   ├── About.jsx
+│   │   ├── Privacy-Policy.jsx
+│   │   └── Terms-of-Service.jsx
+│   └── App.jsx
+
+
+### 🧑‍⚖️ About Adv. Shreya Chetry
+
+Enrolled Advocate with the Sibsagar Bar Association.  
+Practicing in **Criminal Law, Family & Matrimonial Disputes, Civil & Property Law**, and **Corporate Matters** in District Court & Gauhati High Court.
+
+---
+
+### 📄 License
+
+This project is **private** and intended only for Adv. Shreya Chetry’s professional use.
+
+---
+
+**Made with ❤️ for Justice & Excellence**
