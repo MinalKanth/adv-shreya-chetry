@@ -5,6 +5,7 @@ import { FaQuoteLeft, FaStar } from "react-icons/fa";
 const ClientsReview = () => {
 
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
     const handleMove = (e) => {
@@ -14,8 +15,17 @@ const ClientsReview = () => {
       });
     };
 
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
     window.addEventListener("mousemove", handleMove);
-    return () => window.removeEventListener("mousemove", handleMove);
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMove);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const reviews = [
@@ -64,46 +74,59 @@ const ClientsReview = () => {
   ];
 
   return (
-    <div id="experience" style={{
-      width: "100%",
-      background: "linear-gradient(180deg, #111111 0%, #1a1a1a 100%)",
-      color: "#e2e8f0",
-      padding: "5rem 1rem 6rem",
-      position: "relative",
-      overflow: "hidden"
-    }}>
+    <div 
+      id="experience" 
+      style={{
+        width: "100%",
+        background: "linear-gradient(180deg, #111111 0%, #1a1a1a 100%)",
+        color: "#e2e8f0",
+        padding: isMobile ? "4rem 1rem 5rem" : "5rem 1rem 6rem",
+        position: "relative",
+        overflow: "hidden"
+      }}
+    >
 
-      {/* Elegant Gold Mouse Glow */}
-      <motion.div
-        animate={{ x: mouse.x * 6, y: mouse.y * 6 }}
-        style={{
-          position: "absolute",
-          width: "480px",
-          height: "480px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(245,158,11,0.28), transparent 70%)",
-          filter: "blur(110px)",
-          zIndex: 0,
-          pointerEvents: "none",
-          top: "25%",
-          left: "35%"
-        }}
-      />
+      {/* Elegant Gold Mouse Glow - Only on Desktop */}
+      {!isMobile && (
+        <motion.div
+          animate={{ x: mouse.x * 6, y: mouse.y * 6 }}
+          style={{
+            position: "absolute",
+            width: "480px",
+            height: "480px",
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(245,158,11,0.28), transparent 70%)",
+            filter: "blur(110px)",
+            zIndex: 0,
+            pointerEvents: "none",
+            top: "25%",
+            left: "35%"
+          }}
+        />
+      )}
 
-      <div style={{ maxWidth: "1200px", margin: "0 auto", position: "relative", zIndex: 2 }}>
+      <div style={{ 
+        maxWidth: "1280px", 
+        margin: "0 auto", 
+        position: "relative", 
+        zIndex: 2 
+      }}>
 
         {/* Header - Gold Theme */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          style={{ textAlign: "center", marginBottom: "70px" }}
+          style={{ 
+            textAlign: "center", 
+            marginBottom: isMobile ? "50px" : "70px" 
+          }}
         >
           <motion.div
             animate={{ rotate: [0, 12, -12, 0] }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
             style={{ 
               display: "inline-block", 
-              fontSize: "4rem", 
+              fontSize: isMobile ? "3.2rem" : "4rem", 
               color: "#f59e0b", 
               marginBottom: "20px" 
             }}
@@ -112,7 +135,7 @@ const ClientsReview = () => {
           </motion.div>
 
           <h2 style={{
-            fontSize: "3.1rem",
+            fontSize: isMobile ? "2.4rem" : "3.1rem",
             marginBottom: "16px",
             fontWeight: 800,
             color: "#fff",
@@ -123,7 +146,7 @@ const ClientsReview = () => {
           
           <p style={{ 
             color: "#f59e0b", 
-            fontSize: "1.35rem", 
+            fontSize: isMobile ? "1.15rem" : "1.35rem", 
             fontWeight: 600,
             letterSpacing: "1px"
           }}>
@@ -132,19 +155,21 @@ const ClientsReview = () => {
           
           <p style={{ 
             color: "#d97706", 
-            fontSize: "1.25rem", 
+            fontSize: isMobile ? "1.05rem" : "1.25rem", 
             marginTop: "12px"
           }}>
             Real stories from real clients in Sibsagar &amp; Assam
           </p>
         </motion.div>
 
-        {/* Reviews Grid */}
+        {/* Reviews Grid - Fully Responsive */}
         <div style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(360px, 1fr))",
-          gap: "32px",
-          padding: "0 20px"
+          gridTemplateColumns: isMobile 
+            ? "1fr" 
+            : "repeat(auto-fit, minmax(360px, 1fr))",
+          gap: isMobile ? "24px" : "32px",
+          padding: isMobile ? "0 10px" : "0 20px"
         }}>
           {reviews.map((review, i) => (
             <motion.div
@@ -152,12 +177,12 @@ const ClientsReview = () => {
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              whileHover={{ y: -20, scale: 1.04 }}
+              whileHover={{ y: isMobile ? 0 : -20, scale: isMobile ? 1 : 1.04 }}
               style={{
                 background: "rgba(255,255,255,0.06)",
                 border: "2px solid #f59e0b",
                 borderRadius: "32px",
-                padding: "42px 38px",
+                padding: isMobile ? "32px 28px" : "42px 38px",
                 position: "relative",
                 boxShadow: "0 25px 55px rgba(245,158,11,0.15)",
                 height: "100%",
@@ -169,18 +194,23 @@ const ClientsReview = () => {
                 color: "#f59e0b",
                 opacity: 0.15,
                 position: "absolute",
-                top: "32px",
-                right: "32px"
+                top: isMobile ? "24px" : "32px",
+                right: isMobile ? "24px" : "32px"
               }} />
 
-              <div style={{ display: "flex", gap: "6px", marginBottom: "24px", color: "#fbbf24" }}>
+              <div style={{ 
+                display: "flex", 
+                gap: "6px", 
+                marginBottom: "24px", 
+                color: "#fbbf24" 
+              }}>
                 {[...Array(review.rating)].map((_, starIndex) => (
                   <FaStar key={starIndex} size={22} />
                 ))}
               </div>
 
               <p style={{
-                fontSize: "1.18rem",
+                fontSize: isMobile ? "1.08rem" : "1.18rem",
                 lineHeight: "1.8",
                 color: "#e2e8f0",
                 marginBottom: "32px",
@@ -227,14 +257,15 @@ const ClientsReview = () => {
           ))}
         </div>
 
+        {/* Trust Note */}
         <motion.p 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           style={{
             textAlign: "center",
-            marginTop: "80px",
+            marginTop: isMobile ? "60px" : "80px",
             color: "#fbbf24",
-            fontSize: "1.2rem",
+            fontSize: isMobile ? "1.1rem" : "1.2rem",
             fontWeight: 600,
             letterSpacing: "1px"
           }}

@@ -11,6 +11,16 @@ import { motion } from "framer-motion";
 export default function App() {
   const navigate = useNavigate();
 
+  const [isMobile, setIsMobile] = React.useState(window.innerWidth < 768);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const handleNavClick = (id) => {
     if (window.location.pathname !== "/") {
       navigate("/");
@@ -70,7 +80,7 @@ export default function App() {
         style={{
           background: "linear-gradient(180deg, #111111 0%, #1a1a1a 100%)",
           borderTop: "2px solid #f59e0b",
-          padding: "80px 20px 50px",
+          padding: isMobile ? "60px 15px 40px" : "80px 20px 50px",
           color: "#e2e8f0",
           position: "relative",
           overflow: "hidden"
@@ -95,7 +105,7 @@ export default function App() {
             style={{
               display: "flex",
               justifyContent: "center",
-              marginBottom: "30px",
+              marginBottom: isMobile ? "25px" : "30px",
               textAlign: "center"
             }}
           >
@@ -106,35 +116,23 @@ export default function App() {
               borderBottom: "4px solid #f59e0b",
               paddingBottom: "18px"
             }}>
-              {/* Scales Icon - Exactly like your visiting card */}
-              {/* <motion.div
-                animate={{ rotate: [0, 12, -12, 0] }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                style={{ fontSize: "3.2rem", color: "#f59e0b" }}
-              >
-                ⚖️
-              </motion.div> */}
               <motion.img
-  src="/logos/Shreya-Chetry-Advocate-Logo.png"
-  alt="Advocate Logo"
-  animate={{ rotate: [0, 10, -10, 0] }}
-  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-  style={{
-    height: "175px",
-    width: "auto",
-    objectFit: "contain",
-
-    // ✨ Gold glow effect
-    filter: "drop-shadow(0 6px 16px rgba(245,158,11,0.5))",
-
-    // Optional polish
-    borderRadius: "8px"
-  }}
-/>
+                src="/logos/Shreya-Chetry-Advocate-Logo.png"
+                alt="Advocate Logo"
+                animate={{ rotate: [0, 10, -10, 0] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                style={{
+                  height: isMobile ? "120px" : "175px",
+                  width: "auto",
+                  objectFit: "contain",
+                  filter: "drop-shadow(0 6px 16px rgba(245,158,11,0.5))",
+                  borderRadius: "8px"
+                }}
+              />
 
               <div>
                 <h1 style={{
-                  fontSize: "2.8rem",
+                  fontSize: isMobile ? "2.2rem" : "2.8rem",
                   fontWeight: "800",
                   color: "#fff",
                   margin: "0 0 6px 0",
@@ -145,7 +143,7 @@ export default function App() {
                 </h1>
                 <p style={{
                   color: "#f59e0b",
-                  fontSize: "1.25rem",
+                  fontSize: isMobile ? "1.1rem" : "1.25rem",
                   margin: 0,
                   fontWeight: "600",
                   letterSpacing: "2px"
@@ -160,8 +158,8 @@ export default function App() {
           <div style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-            gap: "60px",
-            marginBottom: "70px",
+            gap: isMobile ? "40px" : "60px",
+            marginBottom: isMobile ? "50px" : "70px",
             textAlign: "center"
           }}>
             
@@ -173,7 +171,7 @@ export default function App() {
               <h3 style={{ 
                 color: "#f59e0b", 
                 marginBottom: "20px", 
-                fontSize: "1.45rem",
+                fontSize: isMobile ? "1.35rem" : "1.45rem",
                 fontWeight: "700"
               }}>
                 Shreya Chetry
@@ -181,7 +179,7 @@ export default function App() {
               <p style={{ 
                 color: "#e2e8f0", 
                 lineHeight: "1.85",
-                fontSize: "1.05rem"
+                fontSize: isMobile ? "1rem" : "1.05rem"
               }}>
                 Enrolled Advocate<br />
                 Sibsagar Bar Association<br />
@@ -197,7 +195,7 @@ export default function App() {
               <h4 style={{ 
                 color: "#f59e0b", 
                 marginBottom: "20px",
-                fontSize: "1.3rem",
+                fontSize: isMobile ? "1.2rem" : "1.3rem",
                 fontWeight: "700"
               }}>Quick Links</h4>
               <div style={{ 
@@ -225,7 +223,7 @@ export default function App() {
                   whileHover={{ x: 12, color: "#f59e0b" }}
                   style={{ cursor: "pointer", fontSize: "1.1rem", fontWeight: 500 }}
                 >
-                  Experience
+                  Testimonials
                 </motion.span>
                 <motion.span 
                   onClick={() => handleNavClick("contact")} 
@@ -245,10 +243,10 @@ export default function App() {
               <h4 style={{ 
                 color: "#f59e0b", 
                 marginBottom: "20px",
-                fontSize: "1.3rem",
+                fontSize: isMobile ? "1.2rem" : "1.3rem",
                 fontWeight: "700"
               }}>Office &amp; Contact</h4>
-              <div style={{ color: "#e2e8f0", lineHeight: "2.2", fontSize: "1.05rem" }}>
+              <div style={{ color: "#e2e8f0", lineHeight: "2.2", fontSize: isMobile ? "1rem" : "1.05rem" }}>
                 <p>📍 Rupohi Pathar, Rudrasagar, Sibsagar, Assam</p>
                 <p>
                   📞 <a href="tel:7575995712" style={{ color: "#f59e0b", textDecoration: "none", fontWeight: 600 }}>
@@ -271,13 +269,13 @@ export default function App() {
               <h4 style={{ 
                 color: "#f59e0b", 
                 marginBottom: "20px",
-                fontSize: "1.3rem",
+                fontSize: isMobile ? "1.2rem" : "1.3rem",
                 fontWeight: "700"
               }}>Credentials</h4>
               <p style={{ 
                 color: "#e2e8f0", 
                 lineHeight: "1.95",
-                fontSize: "1.05rem"
+                fontSize: isMobile ? "1rem" : "1.05rem"
               }}>
                 • MA, LLM<br />
                 • NET Qualified<br />
@@ -289,14 +287,14 @@ export default function App() {
 
           {/* Bottom Bar - Gold Accents */}
           <div style={{
-            paddingTop: "40px",
+            paddingTop: isMobile ? "30px" : "40px",
             borderTop: "1px solid rgba(245,158,11,0.25)",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: "22px",
+            gap: isMobile ? "18px" : "22px",
             color: "#d97706",
-            fontSize: "0.98rem",
+            fontSize: isMobile ? "0.9rem" : "0.98rem",
             textAlign: "center"
           }}>
             <motion.div
@@ -308,7 +306,7 @@ export default function App() {
 
             <div style={{ 
               display: "flex", 
-              gap: "40px", 
+              gap: isMobile ? "25px" : "40px", 
               flexWrap: "wrap", 
               justifyContent: "center" 
             }}>
@@ -337,7 +335,7 @@ export default function App() {
             </div>
 
             <motion.div 
-              style={{ fontSize: "1.05rem", color: "#fbbf24", fontWeight: 500 }}
+              style={{ fontSize: isMobile ? "1rem" : "1.05rem", color: "#fbbf24", fontWeight: 500 }}
               animate={{ opacity: [0.7, 1, 0.7] }}
               transition={{ duration: 4, repeat: Infinity }}
             >

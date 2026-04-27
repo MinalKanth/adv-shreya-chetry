@@ -78,14 +78,14 @@ export default function Contact() {
     <section
       id="contact"
       style={{
-        padding: "100px 20px 120px",
+        padding: isMobile ? "80px 15px 100px" : "100px 20px 120px",
         background: "linear-gradient(180deg, #111111 0%, #1a1a1a 100%)",
         color: "#e2e8f0",
         position: "relative",
         overflow: "hidden"
       }}
     >
-      {/* Elegant Gold Mouse Glow */}
+      {/* Elegant Gold Mouse Glow - Only on Desktop */}
       {!isMobile && (
         <motion.div
           animate={{ x: mouse.x - 220, y: mouse.y - 220 }}
@@ -108,14 +108,14 @@ export default function Contact() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          style={{ textAlign: "center", marginBottom: 80 }}
+          style={{ textAlign: "center", marginBottom: isMobile ? 60 : 80 }}
         >
           <motion.div
             animate={{ rotate: [0, 12, -12, 0] }}
             transition={{ duration: 8, repeat: Infinity }}
             style={{ 
               display: "inline-block", 
-              fontSize: "4.5rem", 
+              fontSize: isMobile ? "3.5rem" : "4.5rem", 
               color: "#f59e0b", 
               marginBottom: 20 
             }}
@@ -124,7 +124,7 @@ export default function Contact() {
           </motion.div>
 
           <h1 style={{
-            fontSize: isMobile ? "2.8rem" : "3.8rem",
+            fontSize: isMobile ? "2.6rem" : "3.8rem",
             fontWeight: 800,
             color: "#fff",
             marginBottom: 12,
@@ -135,10 +135,11 @@ export default function Contact() {
           
           <p style={{ 
             color: "#f59e0b", 
-            fontSize: "1.4rem", 
+            fontSize: isMobile ? "1.25rem" : "1.4rem", 
             fontWeight: 600,
             maxWidth: "620px",
-            margin: "0 auto"
+            margin: "0 auto",
+            lineHeight: 1.4
           }}>
             Ready for expert legal consultation? Let's discuss your case.
           </p>
@@ -147,7 +148,7 @@ export default function Contact() {
         <div style={{
           display: "grid",
           gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
-          gap: 80,
+          gap: isMobile ? 50 : 80,
           alignItems: "start"
         }}>
           
@@ -160,13 +161,13 @@ export default function Contact() {
               background: "rgba(255,255,255,0.06)",
               border: "2px solid #f59e0b",
               borderRadius: 32,
-              padding: "50px 40px",
+              padding: isMobile ? "40px 30px" : "50px 40px",
               height: "100%"
             }}
           >
             <h3 style={{ 
               color: "#f59e0b", 
-              fontSize: "2rem", 
+              fontSize: isMobile ? "1.8rem" : "2rem", 
               marginBottom: 40,
               fontWeight: 700
             }}>
@@ -239,7 +240,7 @@ export default function Contact() {
               background: "rgba(255,255,255,0.06)",
               border: "2px solid #f59e0b",
               borderRadius: 32,
-              padding: "50px 45px",
+              padding: isMobile ? "40px 30px" : "50px 45px",
               boxShadow: "0 30px 70px rgba(245,158,11,0.25)"
             }}
           >
@@ -280,7 +281,7 @@ export default function Contact() {
               <textarea
                 name="message"
                 placeholder="Brief details about your case or requirements..."
-                rows="6"
+                rows={isMobile ? "5" : "6"}
                 value={form.message}
                 onChange={handleChange}
                 style={inputStyle}
@@ -292,10 +293,10 @@ export default function Contact() {
                 whileTap={{ scale: 0.96 }}
                 style={{
                   marginTop: 12,
-                  padding: "20px 40px",
+                  padding: isMobile ? "18px 40px" : "20px 40px",
                   background: "linear-gradient(90deg, #f59e0b, #fbbf24)",
                   color: "#111111",
-                  fontSize: "1.25rem",
+                  fontSize: isMobile ? "1.2rem" : "1.25rem",
                   fontWeight: 800,
                   border: "none",
                   borderRadius: 50,
@@ -336,4 +337,4 @@ const inputStyle = {
   fontSize: "1.1rem",
   outline: "none",
   transition: "all 0.3s"
-};
+};  

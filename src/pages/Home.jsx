@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
+import { FaQuoteLeft, FaStar } from "react-icons/fa";
 
 export default function Home() {
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
@@ -56,18 +57,18 @@ export default function Home() {
   ];
 
   const reviews = [
-  { name: "Rahul Sharma", role: "Business Owner", review: "Adv. Shreya Chetry handled my property dispute with exceptional professionalism. She secured a favorable outcome in record time. Highly recommended!", rating: 5, location: "Sibsagar" },
-  { name: "Priya Das", role: "Homemaker", review: "She guided me through a difficult divorce and custody case with compassion and expertise. Truly felt supported throughout the entire process.", rating: 5, location: "Rudrasagar" },
-  { name: "Amit Baruah", role: "Entrepreneur", review: "Excellent legal support in my criminal defense case. She fought hard and got me bail on the first hearing. Very knowledgeable and trustworthy.", rating: 5, location: "Sibsagar" },
-  { name: "Anjali Hazarika", role: "School Teacher", review: "Adv. Shreya helped resolve a family property partition matter smoothly. Her attention to detail and clear communication made everything easy.", rating: 5, location: "Sibsagar" },
-  { name: "Sanjay Saikia", role: "Retired Officer", review: "Professional and result-oriented. She represented me in a civil recovery suit and won the case. Best advocate I have worked with.", rating: 5, location: "Assam" },
-  { name: "Bijoy Dutta", role: "Contractor", review: "Adv. Shreya Chetry drafted my property agreement and successfully handled a land dispute. Very efficient, honest and result-driven. Thank you!", rating: 5, location: "Sibsagar" },
+    { name: "Rahul Sharma", role: "Business Owner", review: "Adv. Shreya Chetry handled my property dispute with exceptional professionalism. She secured a favorable outcome in record time. Highly recommended!", rating: 5, location: "Sibsagar" },
+    { name: "Priya Das", role: "Homemaker", review: "She guided me through a difficult divorce and custody case with compassion and expertise. Truly felt supported throughout the entire process.", rating: 5, location: "Rudrasagar" },
+    { name: "Amit Baruah", role: "Entrepreneur", review: "Excellent legal support in my criminal defense case. She fought hard and got me bail on the first hearing. Very knowledgeable and trustworthy.", rating: 5, location: "Sibsagar" },
+    { name: "Anjali Hazarika", role: "School Teacher", review: "Adv. Shreya helped resolve a family property partition matter smoothly. Her attention to detail and clear communication made everything easy.", rating: 5, location: "Sibsagar" },
+    { name: "Sanjay Saikia", role: "Retired Officer", review: "Professional and result-oriented. She represented me in a civil recovery suit and won the case. Best advocate I have worked with.", rating: 5, location: "Assam" },
+    { name: "Bijoy Dutta", role: "Contractor", review: "Adv. Shreya Chetry drafted my property agreement and successfully handled a land dispute. Very efficient, honest and result-driven. Thank you!", rating: 5, location: "Sibsagar" },
   ];
 
   return (
     <section style={{ padding: "2px", overflow: "hidden", background: "#0a0a0a", color: "#e2e8f0", minHeight: "100vh" }}>
       
-      {/* Elegant Gold Mouse Glow */}
+      {/* Elegant Gold Mouse Glow - Desktop Only */}
       {!isMobile && (
         <motion.div
           animate={{ x: mouse.x * 8, y: mouse.y * 8 }}
@@ -98,7 +99,6 @@ export default function Home() {
           overflow: "hidden"
         }}
       >
-        {/* Background & Gold Accents (unchanged) */}
         <div style={{
           position: "absolute",
           inset: 0,
@@ -130,10 +130,10 @@ export default function Home() {
           }}
         />
 
-        <div style={{ maxWidth: "1400px", margin: "0 auto", padding: "0 40px", position: "relative", zIndex: 10 }}>
-          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: "80px", alignItems: "center" }}>
+        <div style={{ maxWidth: "1400px", margin: "0 auto", padding: isMobile ? "0 20px" : "0 40px", position: "relative", zIndex: 10 }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? "40px" : "80px", alignItems: "center" }}>
             
-            {/* Left Content - Unchanged */}
+            {/* Left Content */}
             <motion.div 
               animate={{ x: mouse.x * 0.25, y: mouse.y * 0.25 }}
               style={{ textAlign: isMobile ? "center" : "left" }}
@@ -141,14 +141,14 @@ export default function Home() {
               <motion.div
                 animate={{ rotate: [0, 8, -8, 0] }}
                 transition={{ duration: 6, repeat: Infinity }}
-                style={{ display: "inline-block", fontSize: "4.5rem", marginBottom: 20, color: "#f59e0b" }}
+                style={{ display: "inline-block", fontSize: isMobile ? "3.5rem" : "4.5rem", marginBottom: 20, color: "#f59e0b" }}
               >
                 ⚖️
               </motion.div>
 
               <p style={{ 
                 color: "#f59e0b", 
-                fontSize: "1.35rem", 
+                fontSize: isMobile ? "1.1rem" : "1.35rem", 
                 fontWeight: 700, 
                 letterSpacing: "6px", 
                 marginBottom: 12 
@@ -157,9 +157,9 @@ export default function Home() {
               </p>
 
               <h1 style={{
-                fontSize: isMobile ? "3.8rem" : "6rem",
+                fontSize: isMobile ? "2.8rem" : "6rem",
                 fontWeight: 800,
-                lineHeight: 1.02,
+                lineHeight: 1.05,
                 color: "#fff",
                 marginBottom: 12,
                 textShadow: "0 10px 40px rgba(245,158,11,0.3)",
@@ -168,7 +168,7 @@ export default function Home() {
               </h1>
 
               <p style={{
-                fontSize: "1.65rem",
+                fontSize: isMobile ? "1.35rem" : "1.65rem",
                 color: "#f59e0b",
                 marginBottom: 32,
                 fontWeight: 600,
@@ -178,7 +178,7 @@ export default function Home() {
               </p>
 
               <h2 style={{
-                fontSize: isMobile ? "2.2rem" : "3rem",
+                fontSize: isMobile ? "2rem" : "3rem",
                 lineHeight: 1.25,
                 color: "#e2e8f0",
                 marginBottom: 50,
@@ -219,12 +219,12 @@ export default function Home() {
                   whileHover={{ scale: 1.1, y: -6 }}
                   whileTap={{ scale: 0.95 }}
                   style={{
-                    padding: "24px 58px",
+                    padding: isMobile ? "20px 48px" : "24px 58px",
                     background: "linear-gradient(90deg, #f59e0b, #fbbf24)",
                     borderRadius: 50,
                     color: "#111111",
                     fontWeight: 800,
-                    fontSize: "1.35rem",
+                    fontSize: isMobile ? "1.2rem" : "1.35rem",
                     textDecoration: "none",
                     boxShadow: "0 25px 60px rgba(245,158,11,0.6)",
                     display: "flex",
@@ -242,13 +242,13 @@ export default function Home() {
                   whileHover={{ scale: 1.1, y: -6 }}
                   whileTap={{ scale: 0.95 }}
                   style={{
-                    padding: "24px 52px",
+                    padding: isMobile ? "20px 44px" : "24px 52px",
                     background: "#111111",
                     border: "3px solid #f59e0b",
                     borderRadius: 50,
                     color: "#f59e0b",
                     fontWeight: 800,
-                    fontSize: "1.35rem",
+                    fontSize: isMobile ? "1.2rem" : "1.35rem",
                     textDecoration: "none",
                     boxShadow: "0 20px 50px rgba(245,158,11,0.4)",
                   }}
@@ -257,64 +257,66 @@ export default function Home() {
                 </motion.a>
               </div>
 
-              <p style={{ marginTop: 50, color: "#d97706", fontSize: "1.1rem", fontWeight: 500, letterSpacing: "2px" }}>
+              <p style={{ marginTop: 50, color: "#d97706", fontSize: isMobile ? "1rem" : "1.1rem", fontWeight: 500, letterSpacing: "2px" }}>
                 📍 Rupohi Pathar, Rudrasagar, Sibsagar • poppyshreya06@gmail.com
               </p>
             </motion.div>
 
-            {/* Right Profile - Unchanged */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.85, rotate: -6 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
-              transition={{ duration: 1.4, ease: "easeOut" }}
-              style={{ display: isMobile ? "none" : "flex", justifyContent: "center", position: "relative" }}
-            >
-              <div style={{
-                width: "460px",
-                height: "460px",
-                borderRadius: "50%",
-                overflow: "hidden",
-                border: "18px solid #f59e0b",
-                boxShadow: "0 40px 100px rgba(245,158,11,0.5), 0 0 120px rgba(251,191,36,0.3)",
-                background: "#111",
-                position: "relative",
-              }}>
-                <img
-                  src="/shreya-profile.png"
-                  alt="Adv. Shreya Chetry"
-                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                />
-                <div style={{
-                  position: "absolute",
-                  inset: "12px",
-                  border: "4px solid rgba(251,191,36,0.6)",
-                  borderRadius: "50%",
-                }} />
-              </div>
-
+            {/* Right Profile - Hidden on Mobile */}
+            {!isMobile && (
               <motion.div
-                animate={{ y: [-12, 12, -12] }}
-                transition={{ duration: 4, repeat: Infinity }}
-                style={{
-                  position: "absolute",
-                  top: "-25px",
-                  right: "-25px",
-                  background: "linear-gradient(135deg, #f59e0b, #fbbf24)",
-                  color: "#111",
-                  padding: "14px 32px",
-                  borderRadius: "9999px",
-                  fontWeight: 800,
-                  fontSize: "1.15rem",
-                  boxShadow: "0 20px 50px rgba(245,158,11,0.6)",
-                  zIndex: 20,
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 10,
-                }}
+                initial={{ opacity: 0, scale: 0.85, rotate: -6 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                transition={{ duration: 1.4, ease: "easeOut" }}
+                style={{ display: "flex", justifyContent: "center", position: "relative" }}
               >
-                Advocate
+                <div style={{
+                  width: "460px",
+                  height: "460px",
+                  borderRadius: "50%",
+                  overflow: "hidden",
+                  border: "18px solid #f59e0b",
+                  boxShadow: "0 40px 100px rgba(245,158,11,0.5), 0 0 120px rgba(251,191,36,0.3)",
+                  background: "#111",
+                  position: "relative",
+                }}>
+                  <img
+                    src="/shreya-profile.png"
+                    alt="Adv. Shreya Chetry"
+                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  />
+                  <div style={{
+                    position: "absolute",
+                    inset: "12px",
+                    border: "4px solid rgba(251,191,36,0.6)",
+                    borderRadius: "50%",
+                  }} />
+                </div>
+
+                <motion.div
+                  animate={{ y: [-12, 12, -12] }}
+                  transition={{ duration: 4, repeat: Infinity }}
+                  style={{
+                    position: "absolute",
+                    top: "-25px",
+                    right: "-25px",
+                    background: "linear-gradient(135deg, #f59e0b, #fbbf24)",
+                    color: "#111",
+                    padding: "14px 32px",
+                    borderRadius: "9999px",
+                    fontWeight: 800,
+                    fontSize: "1.15rem",
+                    boxShadow: "0 20px 50px rgba(245,158,11,0.6)",
+                    zIndex: 20,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                  }}
+                >
+                  Advocate
+                </motion.div>
               </motion.div>
-            </motion.div>
+            )}
           </div>
         </div>
 
@@ -338,14 +340,13 @@ export default function Home() {
       </div>
 
       {/* PRACTICE AREAS */}
-      <div id="practice-areas" style={{ padding: "130px 20px", background: "#111111" }}>
-        {/* ... your existing practice areas code (unchanged) ... */}
+      <div id="practice-areas" style={{ padding: isMobile ? "100px 20px" : "130px 20px", background: "#111111" }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto", textAlign: "center" }}>
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             style={{ 
-              fontSize: "3.4rem", 
+              fontSize: isMobile ? "2.6rem" : "3.4rem", 
               fontWeight: 800, 
               color: "#fff", 
               marginBottom: 24,
@@ -355,7 +356,7 @@ export default function Home() {
             Practice Areas
           </motion.h2>
           
-          <p style={{ color: "#f59e0b", fontSize: "1.35rem", maxWidth: "720px", margin: "0 auto 80px" }}>
+          <p style={{ color: "#f59e0b", fontSize: isMobile ? "1.15rem" : "1.35rem", maxWidth: "720px", margin: "0 auto 80px" }}>
             Where trust meets legal expertise
           </p>
 
@@ -368,14 +369,14 @@ export default function Home() {
                   background: "rgba(255,255,255,0.05)",
                   border: "2px solid #f59e0b",
                   borderRadius: "32px",
-                  padding: "52px 40px",
+                  padding: isMobile ? "40px 30px" : "52px 40px",
                   textAlign: "center",
                   position: "relative",
                   overflow: "hidden",
                 }}
               >
                 <div style={{ fontSize: "4.8rem", marginBottom: 28, color: "#f59e0b" }}>{area.icon}</div>
-                <h3 style={{ fontSize: "1.95rem", color: "#fff", marginBottom: 20 }}>{area.title}</h3>
+                <h3 style={{ fontSize: isMobile ? "1.7rem" : "1.95rem", color: "#fff", marginBottom: 20 }}>{area.title}</h3>
                 <p style={{ color: "#e2e8f0", lineHeight: 1.75 }}>{area.desc}</p>
                 <div style={{
                   position: "absolute",
@@ -394,17 +395,17 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ==================== NEW ABOUT ME SECTION ==================== */}
+      {/* ABOUT ME SECTION */}
       <section 
         id="about" 
         style={{ 
-          padding: "130px 20px", 
+          padding: isMobile ? "100px 20px" : "130px 20px", 
           background: "#0a0a0a",
           position: "relative"
         }}
       >
         <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: "80px", alignItems: "center" }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: isMobile ? "50px" : "80px", alignItems: "center" }}>
             
             {/* Left - About Text */}
             <motion.div
@@ -415,13 +416,13 @@ export default function Home() {
               <motion.div
                 animate={{ rotate: [0, 10, -10, 0] }}
                 transition={{ duration: 8, repeat: Infinity }}
-                style={{ fontSize: "3.5rem", color: "#f59e0b", marginBottom: 20, display: "inline-block" }}
+                style={{ fontSize: isMobile ? "3rem" : "3.5rem", color: "#f59e0b", marginBottom: 20, display: "inline-block" }}
               >
                 ⚖️
               </motion.div>
 
               <h2 style={{
-                fontSize: "3.2rem",
+                fontSize: isMobile ? "2.6rem" : "3.2rem",
                 fontWeight: 800,
                 color: "#fff",
                 marginBottom: 24,
@@ -431,7 +432,7 @@ export default function Home() {
               </h2>
 
               <p style={{ 
-                fontSize: "1.25rem", 
+                fontSize: isMobile ? "1.15rem" : "1.25rem", 
                 lineHeight: "1.85", 
                 color: "#e2e8f0",
                 marginBottom: 28
@@ -440,7 +441,7 @@ export default function Home() {
               </p>
 
               <p style={{ 
-                fontSize: "1.18rem", 
+                fontSize: isMobile ? "1.08rem" : "1.18rem", 
                 lineHeight: "1.85", 
                 color: "#cbd5e1",
                 marginBottom: 32
@@ -465,7 +466,7 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Right - Professional Portrait / Description */}
+            {/* Right - Portrait */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -474,13 +475,13 @@ export default function Home() {
                 background: "rgba(255,255,255,0.06)",
                 border: "3px solid #f59e0b",
                 borderRadius: "32px",
-                padding: "40px",
+                padding: isMobile ? "30px" : "40px",
                 textAlign: "center"
               }}
             >
               <div style={{
-                width: "220px",
-                height: "220px",
+                width: isMobile ? "180px" : "220px",
+                height: isMobile ? "180px" : "220px",
                 margin: "0 auto 30px",
                 borderRadius: "50%",
                 border: "8px solid #fbbf24",
@@ -494,10 +495,10 @@ export default function Home() {
                 />
               </div>
 
-              <h3 style={{ color: "#fff", fontSize: "1.6rem", marginBottom: 12 }}>
+              <h3 style={{ color: "#fff", fontSize: isMobile ? "1.4rem" : "1.6rem", marginBottom: 12 }}>
                 Dedicated to Justice with Compassion
               </h3>
-              <p style={{ color: "#d97706", fontSize: "1.15rem", lineHeight: "1.7" }}>
+              <p style={{ color: "#d97706", fontSize: isMobile ? "1.05rem" : "1.15rem", lineHeight: 1.7 }}>
                 I believe every client deserves honest guidance, strong representation, and complete transparency. 
                 My goal is not just to win cases — but to deliver peace of mind.
               </p>
@@ -505,7 +506,7 @@ export default function Home() {
               <p style={{ 
                 marginTop: 40, 
                 color: "#fbbf24", 
-                fontSize: "1.1rem", 
+                fontSize: isMobile ? "1rem" : "1.1rem", 
                 fontWeight: 600 
               }}>
                 "Justice Delivered with Integrity"
@@ -515,9 +516,60 @@ export default function Home() {
         </div>
       </section>
 
-      {/* STATS - unchanged */}
-      <div style={{ padding: "110px 20px", background: "#0a0a0a" }}>
-        {/* ... your existing stats code ... */}
+      {/* TESTIMONIALS SECTION */}
+      <section id="experience" style={{ padding: isMobile ? "100px 20px" : "130px 20px", background: "linear-gradient(180deg, #111111 0%, #1a1a1a 100%)" }}>
+        <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            style={{ textAlign: "center", marginBottom: isMobile ? "50px" : "70px" }}
+          >
+            <motion.div animate={{ rotate: [0, 12, -12, 0] }} transition={{ duration: 8, repeat: Infinity }} style={{ display: "inline-block", fontSize: isMobile ? "3rem" : "4rem", color: "#f59e0b", marginBottom: 20 }}>⚖️</motion.div>
+            <h2 style={{ fontSize: isMobile ? "2.6rem" : "3.1rem", fontWeight: 800, color: "#fff", marginBottom: 12 }}>What Our Clients Say</h2>
+            <p style={{ color: "#f59e0b", fontSize: isMobile ? "1.15rem" : "1.35rem", fontWeight: 600 }}>Where trust meets legal expertise</p>
+          </motion.div>
+
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(360px, 1fr))", gap: isMobile ? "24px" : "32px" }}>
+            {reviews.map((review, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                whileHover={{ y: isMobile ? 0 : -20, scale: isMobile ? 1 : 1.04 }}
+                style={{
+                  background: "rgba(255,255,255,0.06)",
+                  border: "2px solid #f59e0b",
+                  borderRadius: "32px",
+                  padding: isMobile ? "32px 28px" : "42px 38px",
+                  boxShadow: "0 25px 55px rgba(245,158,11,0.15)",
+                  height: "100%"
+                }}
+              >
+                <FaQuoteLeft style={{ fontSize: "3.8rem", color: "#f59e0b", opacity: 0.15, position: "absolute", top: isMobile ? "24px" : "32px", right: isMobile ? "24px" : "32px" }} />
+                <div style={{ display: "flex", gap: "6px", marginBottom: "24px", color: "#fbbf24" }}>
+                  {[...Array(review.rating)].map((_, s) => <FaStar key={s} size={22} />)}
+                </div>
+                <p style={{ fontSize: isMobile ? "1.08rem" : "1.18rem", lineHeight: "1.8", color: "#e2e8f0", marginBottom: "32px", fontStyle: "italic" }}>
+                  "{review.review}"
+                </p>
+                <div style={{ display: "flex", alignItems: "center", gap: "18px" }}>
+                  <div style={{ width: "58px", height: "58px", background: "linear-gradient(135deg, #f59e0b, #fbbf24)", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.6rem", color: "#111", fontWeight: "700" }}>
+                    {review.name[0]}
+                  </div>
+                  <div>
+                    <h4 style={{ color: "#fff", margin: "0 0 4px 0", fontSize: "1.25rem", fontWeight: 700 }}>{review.name}</h4>
+                    <p style={{ color: "#d97706", margin: 0 }}>{review.role} • {review.location}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* STATS */}
+      <div style={{ padding: isMobile ? "80px 20px" : "110px 20px", background: "#0a0a0a" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto", display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 50 }}>
           {stats.map((stat, i) => (
             <motion.div 
@@ -525,29 +577,29 @@ export default function Home() {
               whileHover={{ scale: 1.15, y: -8 }}
               style={{ 
                 textAlign: "center", 
-                minWidth: "190px",
+                minWidth: isMobile ? "140px" : "190px",
                 borderBottom: "4px solid #f59e0b",
                 paddingBottom: 20,
               }}
             >
               <h3 style={{ 
-                fontSize: "4rem", 
+                fontSize: isMobile ? "3rem" : "4rem", 
                 color: "#fbbf24", 
                 margin: 0, 
                 fontWeight: 800 
               }}>{stat.value}</h3>
-              <p style={{ color: "#e2e8f0", fontSize: "1.25rem", fontWeight: 500 }}>{stat.label}</p>
+              <p style={{ color: "#e2e8f0", fontSize: isMobile ? "1.1rem" : "1.25rem", fontWeight: 500 }}>{stat.label}</p>
             </motion.div>
           ))}
         </div>
       </div>
 
-      {/* FINAL CTA - unchanged */}
+      {/* FINAL CTA */}
       <motion.div 
         style={{
-          margin: "120px auto",
+          margin: isMobile ? "80px 20px" : "120px auto",
           maxWidth: "1180px",
-          padding: "110px 60px",
+          padding: isMobile ? "70px 30px" : "110px 60px",
           borderRadius: "40px",
           background: "linear-gradient(135deg, #1a1a1a, #2a1f0f)",
           border: "3px solid #f59e0b",
@@ -557,10 +609,10 @@ export default function Home() {
           overflow: "hidden",
         }}
       >
-        <h2 style={{ fontSize: "3.4rem", color: "#fff", marginBottom: 28 }}>
+        <h2 style={{ fontSize: isMobile ? "2.6rem" : "3.4rem", color: "#fff", marginBottom: 28 }}>
           Ready for Expert Legal Guidance?
         </h2>
-        <p style={{ fontSize: "1.45rem", color: "#f59e0b", maxWidth: "680px", margin: "0 auto 60px" }}>
+        <p style={{ fontSize: isMobile ? "1.25rem" : "1.45rem", color: "#f59e0b", maxWidth: "680px", margin: "0 auto 60px" }}>
           Professional legal assistance in Sibsagar with integrity and excellence
         </p>
 
@@ -568,10 +620,10 @@ export default function Home() {
           href="tel:7575995712"
           whileHover={{ scale: 1.12 }}
           style={{
-            padding: "28px 68px",
+            padding: isMobile ? "22px 50px" : "28px 68px",
             background: "linear-gradient(90deg, #f59e0b, #fbbf24)",
             color: "#111",
-            fontSize: "1.55rem",
+            fontSize: isMobile ? "1.35rem" : "1.55rem",
             fontWeight: 800,
             borderRadius: 50,
             textDecoration: "none",
