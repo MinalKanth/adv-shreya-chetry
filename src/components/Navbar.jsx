@@ -10,11 +10,6 @@ const navLinks = [
   { label: "Contact", id: "contact", type: "scroll" },
 ];
 
-const legalLinks = [
-  { label: "Privacy Policy", path: "/privacy-policy" },
-  { label: "Terms of Service", path: "/terms-of-service" },
-];
-
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 992);
@@ -23,18 +18,8 @@ export default function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Close mobile menu + SCROLL TO TOP when navigating to legal pages
   useEffect(() => {
     setIsOpen(false);
-
-    // Fix: Scroll to top when going to Privacy Policy or Terms of Service
-    if (location.pathname === "/privacy-policy" || location.pathname === "/terms-of-service") {
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "instant"   // instant so it doesn't animate from bottom
-      });
-    }
   }, [location]);
 
   const scrollToSection = (id) => {
@@ -97,7 +82,7 @@ export default function Navbar() {
           boxShadow: scrolled ? "0 10px 30px rgba(0,0,0,0.6)" : "none",
         }}
       >
-        {/* LOGO - Matching Visiting Card Style */}
+        {/* LOGO */}
         <Link 
           to="/"
           style={{ 
@@ -109,17 +94,6 @@ export default function Navbar() {
           }}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
-          {/* <motion.div
-            whileHover={{ scale: 1.15, rotate: 12 }}
-            transition={{ type: "spring", stiffness: 400 }}
-            style={{
-              fontSize: isMobile ? "42px" : "52px",
-              color: "#f59e0b",
-              filter: "drop-shadow(0 4px 12px rgba(245,158,11,0.6))",
-            }}
-          >
-            ⚖️
-          </motion.div> */}
           <motion.img
             src="/logos/Shreya-Chetry-Advocate-Logo.png"
             alt="Shreya Chetry Advocate Logo"
@@ -129,22 +103,12 @@ export default function Navbar() {
               height: isMobile ? "52px" : "82px",
               width: "auto",
               objectFit: "contain",
-
-              // ✨ Premium gold glow
               filter: "drop-shadow(0 6px 14px rgba(245,158,11,0.45))",
-
-              // optional subtle contrast boost
-              mixBlendMode: "screen"
             }}
           />
 
           <div>
-            <div style={{ 
-              display: "flex", 
-              alignItems: "center", 
-              gap: "10px",
-              flexWrap: "wrap"
-            }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap" }}>
               <h1 style={{ 
                 margin: 0, 
                 fontSize: isMobile ? "1.35rem" : "1.75rem", 
@@ -182,11 +146,7 @@ export default function Navbar() {
 
         {/* DESKTOP MENU */}
         {!isMobile && (
-          <div style={{
-            display: "flex",
-            gap: "2.6rem",
-            alignItems: "center",
-          }}>
+          <div style={{ display: "flex", gap: "2.6rem", alignItems: "center" }}>
             {navLinks.map((link) => (
               <motion.div
                 key={link.id}
@@ -218,27 +178,10 @@ export default function Navbar() {
                 )}
               </motion.div>
             ))}
-
-            {/* Legal Links */}
-            {legalLinks.map((legal) => (
-              <Link
-                key={legal.path}
-                to={legal.path}
-                style={{
-                  color: location.pathname === legal.path ? "#f59e0b" : "#e2e8f0",
-                  fontWeight: location.pathname === legal.path ? 700 : 600,
-                  textDecoration: "none",
-                  fontSize: "1.08rem",
-                  letterSpacing: "0.5px",
-                }}
-              >
-                {legal.label}
-              </Link>
-            ))}
           </div>
         )}
 
-        {/* CTA Button - Gold Theme */}
+        {/* CTA Button - Desktop */}
         {!isMobile && (
           <motion.a
             href="tel:7575995712"
@@ -264,14 +207,14 @@ export default function Navbar() {
           </motion.a>
         )}
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Hamburger */}
         {isMobile && (
           <button
             onClick={() => setIsOpen(!isOpen)}
             style={{
               background: "none",
               border: "none",
-              fontSize: "2rem",
+              fontSize: "2.2rem",
               color: "#f59e0b",
               cursor: "pointer",
               padding: "8px",
@@ -282,7 +225,7 @@ export default function Navbar() {
         )}
       </nav>
 
-      {/* MOBILE MENU */}
+      {/* ==================== MOBILE MENU WITH CLEAR CLOSE BUTTON ==================== */}
       <AnimatePresence>
         {isOpen && isMobile && (
           <motion.div
@@ -298,22 +241,42 @@ export default function Navbar() {
               background: "rgba(17,17,17,0.98)",
               backdropFilter: "blur(20px)",
               zIndex: 9999,
-              paddingTop: "100px",
+              paddingTop: "90px",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
+              overflowY: "auto",
             }}
           >
+            {/* Close Button - Top Right */}
+            <button
+              onClick={() => setIsOpen(false)}
+              style={{
+                position: "absolute",
+                top: "25px",
+                right: "25px",
+                background: "none",
+                border: "none",
+                fontSize: "2.8rem",
+                color: "#f59e0b",
+                cursor: "pointer",
+                zIndex: 10000,
+              }}
+            >
+              ✕
+            </button>
+
             {navLinks.map((link) => (
               <motion.div
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
                 whileHover={{ scale: 1.05, color: "#f59e0b" }}
+                whileTap={{ scale: 0.95 }}
                 style={{
-                  padding: "20px 0",
-                  width: "80%",
+                  padding: "22px 0",
+                  width: "85%",
                   textAlign: "center",
-                  fontSize: "1.45rem",
+                  fontSize: "1.5rem",
                   color: "#e2e8f0",
                   borderBottom: "1px solid rgba(245,158,11,0.25)",
                   cursor: "pointer",
@@ -324,34 +287,18 @@ export default function Navbar() {
               </motion.div>
             ))}
 
-            {legalLinks.map((legal) => (
-              <Link
-                key={legal.path}
-                to={legal.path}
-                style={{
-                  padding: "20px 0",
-                  width: "80%",
-                  textAlign: "center",
-                  fontSize: "1.45rem",
-                  color: location.pathname === legal.path ? "#f59e0b" : "#e2e8f0",
-                  borderBottom: "1px solid rgba(245,158,11,0.25)",
-                  textDecoration: "none",
-                  fontWeight: 600,
-                }}
-              >
-                {legal.label}
-              </Link>
-            ))}
-
+            {/* Call Now Button */}
             <motion.a
               href="tel:7575995712"
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
               style={{
-                marginTop: "50px",
-                padding: "18px 60px",
+                marginTop: "60px",
+                padding: "18px 70px",
                 background: "linear-gradient(90deg, #f59e0b, #fbbf24)",
                 color: "#111",
                 borderRadius: 50,
-                fontSize: "1.3rem",
+                fontSize: "1.35rem",
                 fontWeight: 800,
                 textDecoration: "none",
                 boxShadow: "0 15px 40px rgba(245,158,11,0.6)",
