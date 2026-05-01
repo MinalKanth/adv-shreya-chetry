@@ -182,7 +182,7 @@ export default function App() {
                 fontSize: isMobile ? "1rem" : "1.05rem"
               }}>
                 Enrolled Advocate<br />
-                Sibsagar Bar Association<br />
+                Sivasagar Bar Association<br />
                 Practicing in Civil, Criminal, Family &amp; Property Matters
               </p>
             </motion.div>
@@ -247,7 +247,7 @@ export default function App() {
                 fontWeight: "700"
               }}>Office &amp; Contact</h4>
               <div style={{ color: "#e2e8f0", lineHeight: "2.2", fontSize: isMobile ? "1rem" : "1.05rem" }}>
-                <p>📍 Rupohi Pathar, Rudrasagar, Sibsagar, Assam</p>
+                <p>📍 Rupohi Pathar, Rudrasagar, Sivasagar, Assam</p>
                 <p>
                   📞 <a href="tel:7575995712" style={{ color: "#f59e0b", textDecoration: "none", fontWeight: 600 }}>
                     75759 95712
@@ -279,7 +279,7 @@ export default function App() {
               }}>
                 • MA, LLM<br />
                 • NET Qualified<br />
-                • Member, Sibsagar Bar Association<br />
+                • Member, Sivasagar Bar Association<br />
                 • High Court &amp; District Court Practice
               </p>
             </motion.div>
@@ -339,7 +339,7 @@ export default function App() {
               animate={{ opacity: [0.7, 1, 0.7] }}
               transition={{ duration: 4, repeat: Infinity }}
             >
-              Where trust meets legal expertise • Sibsagar, Assam
+              Where trust meets legal expertise • Sivasagar, Assam
             </motion.div>
           </div>
         </div>

@@ -139,7 +139,7 @@ export default function Navbar() {
               letterSpacing: "1.2px",
               fontWeight: 600
             }}>
-              MA, LLM, NET • Sibsagar Bar Association
+              MA, LLM, NET • Sivasagar Bar Association
             </p>
           </div>
         </Link>
