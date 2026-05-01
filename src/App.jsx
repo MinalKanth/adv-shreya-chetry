@@ -59,9 +59,9 @@ export default function App() {
                   <Home />
                 </section>
 
-                <section id="about" style={{ scrollMarginTop: "80px" }}>
+                {/* <section id="about" style={{ scrollMarginTop: "80px" }}>
                   <About />
-                </section>
+                </section> */}
 
                 <section id="contact" style={{ scrollMarginTop: "80px" }}>
                   <Contact />

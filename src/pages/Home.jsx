@@ -527,6 +527,13 @@ export default function Home() {
             <motion.div animate={{ rotate: [0, 12, -12, 0] }} transition={{ duration: 8, repeat: Infinity }} style={{ display: "inline-block", fontSize: isMobile ? "3rem" : "4rem", color: "#f59e0b", marginBottom: 20 }}>⚖️</motion.div>
             <h2 style={{ fontSize: isMobile ? "2.6rem" : "3.1rem", fontWeight: 800, color: "#fff", marginBottom: 12 }}>What Our Clients Say</h2>
             <p style={{ color: "#f59e0b", fontSize: isMobile ? "1.15rem" : "1.35rem", fontWeight: 600 }}>Where trust meets legal expertise</p>
+            <p style={{ 
+            color: "#d97706", 
+            fontSize: isMobile ? "1.05rem" : "1.25rem", 
+            marginTop: "12px"
+          }}>
+            Real stories from real clients in Sibsagar &amp; Assam
+          </p>
           </motion.div>
 
           <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(360px, 1fr))", gap: isMobile ? "24px" : "32px" }}>
@@ -565,6 +572,21 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+          {/* Trust Note */}
+        <motion.p 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          style={{
+            textAlign: "center",
+            marginTop: isMobile ? "60px" : "80px",
+            color: "#fbbf24",
+            fontSize: isMobile ? "1.1rem" : "1.2rem",
+            fontWeight: 600,
+            letterSpacing: "1px"
+          }}
+        >
+          ★★★★★ Trusted by clients across Sibsagar &amp; Assam • 100% Genuine Testimonials
+        </motion.p>
         </div>
       </section>
 
