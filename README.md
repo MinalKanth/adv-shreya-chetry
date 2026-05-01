@@ -3,7 +3,7 @@
   
   <h1>Adv. Shreya Chetry</h1>
   <p><strong>MA, LLM, NET Qualified • Enrolled Advocate</strong></p>
-  <p>Sibsagar Bar Association • Gauhati High Court Practitioner</p>
+  <p>Sivasagar Bar Association • Gauhati High Court Practitioner</p>
   
   <img src="https://img.shields.io/badge/React-18.2-%2361DAFB?style=for-the-badge&logo=react" alt="React"/>
   <img src="https://img.shields.io/badge/Framer%20Motion-11-%23000000?style=for-the-badge&logo=framer" alt="Framer Motion"/>
@@ -45,7 +45,7 @@ A modern, premium, and fully responsive lawyer portfolio website with a **black 
 
 ### 🧑‍⚖️ About Adv. Shreya Chetry
 
-Enrolled Advocate with the Sibsagar Bar Association.  
+Enrolled Advocate with the Sivasagar Bar Association.  
 Practicing in **Criminal Law, Family & Matrimonial Disputes, Civil & Property Law**, and **Corporate Matters** in District Court & Gauhati High Court.
 
 ---

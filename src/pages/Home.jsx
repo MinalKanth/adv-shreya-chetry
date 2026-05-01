@@ -153,7 +153,7 @@ export default function Home() {
                 letterSpacing: "6px", 
                 marginBottom: 12 
               }}>
-                SIBSAGAR BAR ASSOCIATION & GAUHATI HIGH COURT
+                SIVASAGAR BAR ASSOCIATION & GAUHATI HIGH COURT
               </p>
 
               <h1 style={{
